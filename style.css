@@ -1,0 +1,164 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+.input-container {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 5px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+}
+
+.input-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+@media (max-width: 600px) {
+    .input-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+    .input-row {
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+    }
+    .input-row input {
+        flex: 1;
+        min-width: 0;
+    }
+    .input-row .bonus-btn {
+        flex: none;
+        width: 40px;
+        min-width: 40px;
+        padding: 0;
+        height: 38px;
+        /* input yüksekliğiyle eşleşmesi için */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Ceza Ekle butonu: kırmızı, tam genişlik, Satır Ekle ile aynı görünüm */
+    #penaltyBtn {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 8px 15px; /* Satır Ekle ile eşleşir */
+        background-color: #e74c3c;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+    #penaltyBtn:hover {
+        background-color: #c0392b;
+    }
+    .input-container > button {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+.input-container input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 120px;
+}
+
+.input-container button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.input-container button:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+thead th {
+    background-color: #007bff;
+    color: white;
+}
+
+/* İlk iki sütun başlığı için açık mavi arka plan */
+th.blue-header {
+    background-color: #b3d8fd !important;
+    color: #222 !important;
+}
+
+tfoot td {
+    font-weight: bold;
+    background-color: #e9ecef;
+}
+
+/* Varsayılan: combinedRow gizli olsun (6. elde gösterilecek)
+   JS görünürlüğü kontrol eder */
+#combinedRow {
+    display: none;
+}
+
+/* Varsayılan: totalRow da gizli olsun, aynı mantıkla gösterilecek */
+#totalRow {
+    display: none;
+}
+
+/* Ceza hücreleri: kırmızı ve kalın */
+.penalty-cell {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* Tik butonuyla eklenen -100 için yeşil vurgulama */
+.tick-highlight {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+/* Combined footer hücreleri için koşullu renkler */
+#combinedRow td.smaller {
+    background-color: #27ae60; /* yeşil */
+    color: white;
+}
+
+#combinedRow td.larger {
+    background-color: #e74c3c; /* kırmızı */
+    color: white;
+}

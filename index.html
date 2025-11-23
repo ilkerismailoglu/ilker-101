@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>101 Puan Tablosu</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png" />
+    <meta name="theme-color" content="#2196f3" />
+  </head>
+  <body>
+    <h1>101 Puan Tablosu</h1>
+
+    <div class="input-container">
+      <div class="input-row">
+        <input type="number" id="inputRecep" placeholder="Recep" />
+        <input type="number" id="inputFurkan" placeholder="Furkan" />
+        <button
+          class="bonus-btn"
+          onclick="addBonusGroup('Recep','Furkan')"
+          title="Recep ve Furkan'a -100 puan ekle"
+        >
+          &#10003;
+        </button>
+      </div>
+      <div class="input-row">
+        <input type="number" id="inputIlker" placeholder="İlker" />
+        <input type="number" id="inputOmer" placeholder="Ömer" />
+        <button
+          class="bonus-btn"
+          onclick="addBonusGroup('Ilker','Omer')"
+          title="İlker ve Ömer'e -100 puan ekle"
+        >
+          &#10003;
+        </button>
+      </div>
+      <button onclick="addRow()">Satır Ekle</button>
+      <div style="margin-top: 8px; width: 100%">
+        <button id="penaltyBtn" onclick="addPenaltyRow()">Ceza Ekle</button>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th class="blue-header">Recep</th>
+          <th class="blue-header">Furkan</th>
+          <th>İlker</th>
+          <th>Ömer</th>
+        </tr>
+      </thead>
+      <tbody id="dataBody"></tbody>
+      <tfoot>
+        <tr id="totalRow">
+          <td id="totalRecep">0</td>
+          <td id="totalFurkan">0</td>
+          <td id="totalIlker">0</td>
+          <td id="totalOmer">0</td>
+        </tr>
+        <!-- Yeni eklenen satır: 1. hücre = 1. ve 2. sütun toplamı, 2. hücre = 3. ve 4. sütun toplamı -->
+        <tr id="combinedRow">
+          <td id="combined12" colspan="2">0</td>
+          <td id="combined34" colspan="2">0</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <div style="text-align: center; margin-top: 32px">
+      <button id="screenshotBtn" style="padding: 10px 20px; font-size: 16px">
+        Ekran Görüntüsü Al
+      </button>
+      <button
+        id="resetBtn"
+        style="
+          padding: 10px 20px;
+          font-size: 16px;
+          margin-left: 12px;
+          background: #f44336;
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        "
+        onclick="resetGame()"
+        title="Yeni oyuna başla (tüm verileri sil)"
+      >
+        Yeni Oyun
+      </button>
+    </div>
+
+    <!-- html2canvas kütüphanesi -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("./service-worker.js")
+            .then((reg) => console.log("Service Worker registered", reg))
+            .catch((err) => console.error("SW registration failed:", err));
+        });
+      }
+    </script>
+  </body>
+</html>
