@@ -142,7 +142,7 @@ tfoot td {
 
 /* Ceza hücreleri: kırmızı ve kalın */
 .penalty-cell {
-    color: #e74c3c;
+    color: #f00;
     font-weight: bold;
 }
 
